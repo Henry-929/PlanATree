@@ -7,6 +7,7 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PlantATree</title>
 	<!-----bootstrap css ----->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,6 +24,7 @@ session_start();
 			<div class="row mt-2"></div>
 			<div class="row mt-3"></div>
 			<div class="row mt-4"></div>
+	
 	<div class="card-deck shadow p-3 mb-5 bg-white rounded">
 		
 	<?php
@@ -31,7 +33,7 @@ session_start();
     $result = $conn->query($sql);
 	while($row = $result->fetch_assoc()){
 	echo "
-	<div class='col-sm-6'>
+	
 	<div class='card'>
     <img class='card-img-top' src='".$row['pic']."' alt='" .$row['tree_name']. "' >
     <div class='card-body'>
@@ -59,12 +61,12 @@ session_start();
 	</div>
 	</div>
 	</div>
-	</div>
+	
 	";
 	}
 	echo "</div>";
     ?>
-		
+	
 
 	<nav class="navbar fixed-bottom navbar-light bg-light">
 	<?php

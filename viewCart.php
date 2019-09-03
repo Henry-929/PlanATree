@@ -7,6 +7,7 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PlantATree</title>
 	<!-----bootstrap css ----->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,8 +26,8 @@ session_start();
 			<div class="row mt-5"></div>
 			<div class="row mt-6"></div>
 			<div class="row mt-7"></div>
-	<div class="row justify-content-md-center">
-	
+	<div class="row">
+	<div class="col-sm-12">
    <?php
     
     if(!empty($_SESSION["gwc"]))
@@ -74,16 +75,18 @@ session_start();
       <td>{$row['tree_name']}</td>
       <td>$". $row['tree_price']. "</td>
       <td>{$v[1]}</td>
-	  <td><a class='btn btn-primary btn-sm' href='delectCart.php?id={$row['tree_id']}'>Remove from Cart</a> </td>
+	  <td><a class='btn btn-primary btn-sm' href='delectCart.php?id={$row['tree_id']}'>Remove</a> </td>
     </tr>";
 			
 		}
 		
     }
 	echo"</tbody>";
-		echo"</table>";
+		echo"</table></div>";
+		echo "<div class='col-sm-12'>";
 		echo "<a class='btn btn-primary btn-lg btn-block' href='index.php'>Continue Shopping</a>";
 		echo "<a class='btn btn-primary btn-lg btn-block' href='#'>Proceed to Checkout</a>";
+		
 	$aa=0;
 	foreach($arr as $k)
     {
@@ -99,7 +102,7 @@ session_start();
     }
 		
 		echo "<p class='text-center'>Total:$".$aa."</p>";
-		
+		echo "</div>";
 	    
 		}
     ?>
