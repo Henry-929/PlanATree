@@ -19,7 +19,11 @@ session_start();
 <body>
 <div class="container">
 	<div class="row">
-		<div class="card-deck shadow p-3 mb-5 bg-white rounded">
+		<div class="row mt-1"></div>
+		<div class="row mt-2"></div>
+		<div class="row mt-3"></div>
+		<div class="row mt-4"></div>
+	<div class="card-deck shadow p-3 mb-5 bg-white rounded">
 		
 	<?php
     include ("conn.php");
@@ -50,7 +54,7 @@ session_start();
       <small class='text-muted'>Tree Stock:". $row['tree_stock'] ."</small>
 	  </div>
 	<div class='ml-auto p-2 bd-highlight'>  
-	<a class='btn btn-primary btn-sm' href='fruitCart.php?id={$row["tree_id"]}'>Add to Cart</a>
+	<a class='btn btn-primary btn-sm' href='hedgeCart.php?id={$row["tree_id"]}'>Add to Cart</a>
 	</div>
 	</div>
 	</div>
@@ -85,7 +89,7 @@ session_start();
         }
     }
 
-		$aa= $aa*0.9;
+
 		echo "Total:$".$aa."";
 	?>
 	

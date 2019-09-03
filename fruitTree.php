@@ -7,7 +7,6 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PlantATree</title>
 	<!-----bootstrap css ----->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +19,11 @@ session_start();
 <body>
 <div class="container">
 	<div class="row">
-		<div class="card-deck shadow p-3 mb-5 bg-white rounded">
+			<div class="row mt-1"></div>
+			<div class="row mt-2"></div>
+			<div class="row mt-3"></div>
+			<div class="row mt-4"></div>
+	<div class="card-deck shadow p-3 mb-5 bg-white rounded">
 		
 	<?php
     include ("conn.php");
@@ -86,7 +89,6 @@ session_start();
         }
     }
 
-		$aa= $aa*0.9;
 		echo "Total:$".$aa."";
 	?>
 	
