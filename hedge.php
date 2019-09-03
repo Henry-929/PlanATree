@@ -7,110 +7,68 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PlantATree</title>
-	<link rel="stylesheet" type="text/css" href="css/default.css">
-  	<link rel="stylesheet" href="css/style.min.css">
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-----bootstrap css ----->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<!-----bootstrap Jquery ----->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-<script>
-function showTree(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else { 
-        if (window.XMLHttpRequest) {
-            
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","selectTree.php?c="+str,true);
-        xmlhttp.send();
-    }
-}
-</script>
-<style>
-.div-inline
-{
-	float:left;
-	margin: 0.5%;
-};
-.auto{
-	object-fit: cover;
-};
-</style>
-
 <body>
-	<div id="wrapper" class="wrapper">
-	  <header class="header htmleaf-header">
-			<h1><a href="homepage.php">PlantATree</a> <span> </span></h1>
-		</header>
-	  <main>
-	   <div class="container">
+<div class="container">
+	<div class="row">
+		<div class="card-deck shadow p-3 mb-5 bg-white rounded">
+		
 	<?php
-		$userID=isset($_SESSION['user'])?$_SESSION['user']:"";
-
-		if(!empty($userID)){
-        ?>
-            <h2>Welcome back!!</h2>
-        <?php
-            echo $userID; 
-			//buy more than 20 tree beacome VIP
-			$vip = $_SESSION['vip'];
-				if($vip>=20){
-					echo ", You are our VIP, You can get 10% discount!";
-				};			
-        ?>
-            <br/>
-            <a href="logout.php">Sign Out</a>
-        <?php
-
-            }else {
-
-        ?>
-            <h1>Illegal Access!</h1>
-        <?php   
-            }
-        ?> 
-
-	   <table border="1" cellpadding="0" cellspacing="0" width="100%" >
-    <tr>
-        <td>Tree Name</td>
-		<td>Tree Stock</td>
-        <td></td>
-    </tr>
-	<?php
-    
-	
-	
     include ("conn.php");
-    $sql = "select tree_id, tree_name,tree_stock from tree WHERE tree_category = 'hedge'";
+    $sql = "select * from tree WHERE tree_category = 'hedge'";
     $result = $conn->query($sql);
 	while($row = $result->fetch_assoc()){
-    
-        echo " <tr>
-        <td>".$row['tree_name']."</td>
-		<td>".$row['tree_stock']."</td>
-        <td>
-        <a href='hedgeCart.php?id={$row["tree_id"]}'>Add to Cart</a>
-        
-</td>
-    </tr>";
-    }
+	echo "
+	<div class='col-sm-6'>
+	<div class='card'>
+    <img class='card-img-top' src='".$row['pic']."' alt='" .$row['tree_name']. "' >
+    <div class='card-body'>
+      <h5 class='card-title'>" .$row['tree_name']. "</h5>
+      <p class='card-text'>
+	  
+	<p>Infomation: " . $row['tree_des'] . "</p>
+	<p>Tree Category: " . $row['tree_category'] . "</p>
+	<p>Soil Drainage: " . $row['tree_soilDrainage'] . "</p>
+	<p>Sun : ". $row['tree_sun'] ."</p>
+	<p>Maintenance requirements Level: " . $row['tree_mainRequireLv'] . "</p>
+	<p>Max height of mature tree: " . $row['tree_maxHeight'] . "</p>
+	<p>Growth rate: " . $row['tree_growthRate'] . "</p>
+	<p><Mark>Price: " . $row['tree_price'] . "</p>  
+	</p>
+    </div>
+    <div class='card-footer'>
+	<div class='d-flex bd-highlight mb-2'>
+	<div class='p-2 bd-highlight'>
+      <small class='text-muted'>Tree Stock:". $row['tree_stock'] ."</small>
+	  </div>
+	<div class='ml-auto p-2 bd-highlight'>  
+	<a class='btn btn-primary btn-sm' href='fruitCart.php?id={$row["tree_id"]}'>Add to Cart</a>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	";
+	}
+	echo "</div>";
+    ?>
+		
 
-    $ann=array();
+	<nav class="navbar fixed-bottom navbar-light bg-light">
+	<?php
+	$ann=array();
     if(!empty($_SESSION["gwc"]))
     {
         $ann=$_SESSION["gwc"];
     }
-    $Quantity = count($ann);
 
     $aa=0;
     foreach($ann as $k)
@@ -126,36 +84,20 @@ function showTree(str) {
             $aa=$aa + $row['tree_price'] * $k[1];
         }
     }
-	if($vip>=20){
+
 		$aa= $aa*0.9;
-    echo "<br/>Tree Category：{$Quantity}<br/>
-		Total:$".$aa."";
-	}else{
-		echo "<br/>Tree Category：{$Quantity}<br/>
-		Total:$".$aa."";
-	}
+		echo "Total:$".$aa."";
+	?>
+	
+	<a class="btn btn-primary" href="viewCart.php" role="button">
+	<svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" /><circle cx="25" cy="27" r="2" /><circle cx="12" cy="27" r="2" /></svg> View Cart</a>
+	</nav>
+</div>
 
-    ?>
-	<br>
-	   
-		<a href="viewCart.php">View Cart</a>
+</div>
 
-	     <div class="pic">
-			<div class="div-inline" >
-				<input type="radio" name="tree" value="3" onchange='showTree(this.value)'> Paradise Helen<br>
-				<img src="img/Paradise_Helen.png" alt="apple tree" width="300" height="300">
-			</div>
-		  
-			<div class="div-inline">
-				<input type="radio" name="tree" value="4" onchange='showTree(this.value)'> Little Gem Magnolia<br>
-				<img src="img/Little_Gem_Magnolia.png" alt="lemon tree" width="300" height="300">
-			</div>
+</main>
 
-		 </div>
-				<div id="txtHint"><b></b></div>
-	   </div>
-	  </main>
-	</div>
 
 
 </body>
