@@ -20,9 +20,12 @@ echo '<a href="logout.php"> Logout</a>';
 <?php
 include_once('conn.php');
 
+if(isset($_GET['id'])){
+$names=$_GET['id'];
+}
 	
 	
-$q1='SELECT * FROM `personal_message`WHERE `user_name1`="hk1" AND `user_name2`="'.$user.'" ';
+$q1='SELECT * FROM `personal_message` WHERE `user_name1`="'.$names.'" AND `user_name2`="'.$user.'" ';
 $r1= mysqli_query($conn,$q1);
 while($row=mysqli_fetch_assoc($r1)){
 	$message=$row['message'];
@@ -36,29 +39,15 @@ while($row=mysqli_fetch_assoc($r1)){
 if(isset($_POST['submit'])){
 	$message=$_POST['message'];
 	$user=$_SESSION['username'];
-	/*  $c1='SELECT `user_name1`,`user_id` FROM `personal_message` WHERE `user_name2`="'.$user.'"';
-		//$c2='SELECT `user_id` FROM `personal_message` WHERE `user_name2`="'.$user.'"';
-		$r2=mysqli_query($conn,$c1);
-		//$r3=mysqli_query($conn,$c2);
-		while($row=mysqli_fetch_assoc($r2) /* && $row2=mysqli_fetch_assoc($r3 ){
-		echo $username1=$row['user_name1'];
 		
-		$room=$row['user_id'];
-		if($room==0){
-			$room=$room+1;
-		
-		} else{
-			$room++;
-				$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`)
-		VALUES ('','".$message."','".$room."','','".$user."')";
-		 
-		 */
-	
+	$f='SELECT `id` FROM `user` WHERE `user_name`="'.$names.'"';
+	$x=mysqli_query($conn,$f);
+	$row=mysqli_fetch_assoc($x);
 	
 		
-		global $room;
+	
 		$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`)
-		VALUES ('','".$message."','".$room."','','".$user."')";
+		VALUES ('','".$message."','".$row['id']."','".$names."','".$user."')";
 
 	
 	
