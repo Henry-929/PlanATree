@@ -20,24 +20,40 @@ echo '<a href="logout.php"> Logout</a><br><br>';
 <div id="main">
 <?php
 include_once('conn.php');
+$q4='SELECT `id` FROM `user`';
+$r2= mysqli_query($conn,$q4);
+$array=array();
+$id=array();
+$username1=array();
+while($rows=mysqli_fetch_assoc($r2)){
+	$array[]=$rows['id'];
+	
+}
 $q1='SELECT * FROM `personal_message` ';
 $r1= mysqli_query($conn,$q1);
 
 while($row=mysqli_fetch_assoc($r1)){
-	$message=$row['message'];
-	$username1=$row['user_name1'];
-	$username2=$row['user_name2'];
+	$id[]=$row['user_id'];
 	
-	if($username1!="cool" && $username1!=''){
+	$username1[]=$row['user_name1'];
+	}
+
+for($i=0;$i<count($array);$i++){
 	
+
+	if(!empty(count($id)) AND  !empty($id[$i])){
+	if($id[$i]===$array[$i]){
+		$name=$username1[$i];
 	
-	echo '<a href="personal.php">'.$username1.'</a><br>';
+	echo '<a href="personal.php?id='.$name.'">'.$username1[$i].'</a><br>';
 	
-	}else{
+	}}
+	else if(empty(count($id))){
 		echo "No new Message";
 	}
-}
+	
 
+}
 
 
 
