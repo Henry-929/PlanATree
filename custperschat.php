@@ -20,11 +20,11 @@ echo '<a href="logout.php"> Logout</a>';
 <div id="message_area">
 <?php
 include ('conn.php');
-
-
 $user=$_SESSION['username'];
+
 $q1='SELECT * FROM `personal_message` WHERE `user_name1`="'.$user.'" AND `user_name2`="cool"  ';
 $r1= mysqli_query($conn,$q1);
+
 while($row=mysqli_fetch_assoc($r1)){
 	$message=$row['message'];
 	$username1=$row['user_name1'];
@@ -66,23 +66,6 @@ if(isset($_POST['submit'])){
 <input type="submit" name="submit" style="width:90px; height:50px" value="SEND"/>
 </form>
 </div>
-<div id="test">
-<?php
-include ('connection.php');
-$c1='SELECT `user_name1`,`user_id` FROM `personal_message` WHERE `user_name2`="'.$user.'"';
-$r2=mysqli_query($conn,$c1);
-$result=array();
-	
-		while($row=mysqli_fetch_assoc($r2) ){
-		 $result[]=$row;
-		 print_r($result);
-		 /* for($x=0; $x<=$result; $x++){
-			 
-		 echo res['user_name1'];
-		 } */
-		}
 
-?>
-</div>
 </body>
 </html>
