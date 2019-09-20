@@ -119,8 +119,10 @@ session_start();
 			<div class="row mt-1"></div>
 			<div class="row mt-2"></div>
 			<div class="row mt-3"></div>
-		 <div class="d-flex justify-content-around">
 			<div class="row">
+			<div class="col">
+			<div class="d-flex justify-content-around">
+			
 				<div class="card" style="width: 18rem;">
 				<img src="img/1.png" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -129,8 +131,8 @@ session_start();
 				<a href="fruitTree.php" class="btn btn-primary">Go to site</a>
 				</div>
 				</div>		
-			</div>
-			<div class="row">
+			
+			
 				<div class="card" style="width: 18rem;">
 				<img src="img/2.png" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -141,7 +143,7 @@ session_start();
 				</div>
 			</div>
 			</div>
-		 
+			</div>
 	</div>		
 	   
 	 
