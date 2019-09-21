@@ -146,7 +146,43 @@ session_start();
 			</div>
 	</div>		
 	   
-	 
+			<div class="row mt-1"></div>
+			<div class="row mt-2"></div>
+			<div class="row mt-3"></div>
+			<div class="row mt-4"></div>
+			<div class="row mt-5"></div>
+			<div class="row mt-6"></div>
+			<div class="row mt-7"></div>
+	   
+	 <nav class="navbar fixed-bottom navbar-light bg-light">
+	<?php
+	$ann=array();
+    if(!empty($_SESSION["gwc"]))
+    {
+        $ann=$_SESSION["gwc"];
+    }
+
+    $aa=0;
+    foreach($ann as $k)
+    {
+
+        $k[0];
+        $k[1];
+        $sql1="select tree_price from tree where tree_id='{$k[0]}'";
+
+        $price=$conn->query($sql1);
+		while($row = $price->fetch_assoc())
+        {
+            $aa=$aa + $row['tree_price'] * $k[1];
+        }
+    }
+
+		echo "Total:$".$aa."";
+	?>
+	
+	<a class="btn btn-primary" href="viewCart.php" role="button">
+	<svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" /><circle cx="25" cy="27" r="2" /><circle cx="12" cy="27" r="2" /></svg> View Cart</a>
+	</nav>
 
 
 </body>
