@@ -98,10 +98,10 @@ session_start();
 			  </ol>
 			  <div class="carousel-inner">
 				<div class="carousel-item active">
-				  <img src="https://www.bunnings.com.au/-/media/articles/garden/planting%20and%20growing/how%20to%20grow%20and%20prune%20and%20apple%20tree/apple%20tree%20header.jpg" class="d-block w-100" alt="apple_tree" >
+				  <img src="img/apple_dis.jpg" class="d-block w-100" alt="apple_tree" >
 				</div>
 				<div class="carousel-item">
-				  <img src="https://www.sunrexparis.com/wp-content/uploads/2017/03/Citron-960x480.jpg" class="d-block w-100" alt="...">
+				  <img src="img/lemon_dis.jpg" class="d-block w-100" alt="...">
 				</div>
 			  </div>
 			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
