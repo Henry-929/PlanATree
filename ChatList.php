@@ -44,11 +44,11 @@ for($i=0;$i<count($username1);$i++){
 
 	if(!empty(count($id)) AND  !empty($id[$i])){
 	if(in_array($id[$i],$array)){
-	if(!(in_array($username1[$i],$listed))){
+	if(!(in_array($id[$i],$listed))){
 		$name=$username1[$i];
 	
 	echo '<a href="personal.php?id='.$name.'">'.$username1[$i].'</a><br>';
-	$listed[]=$name;}
+	$listed[$i]=$id[$i];}
 	}}
 	else if(empty(count($id))){
 		echo "No new Message";
