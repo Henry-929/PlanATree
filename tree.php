@@ -27,8 +27,8 @@ session_start();
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,6 +78,12 @@ session_start();
       </li>
 	  
     </ul>
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<a class="nav-link" href="login.php">Login <span class="sr-only"></span></a>
+		</li>
+	</ul>
+	&nbsp;&nbsp;
     <form class="form-inline my-2 my-lg-0" action="searchProcess.php" method="post" >
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="apple">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -114,7 +120,7 @@ session_start();
 			<div class='card-body'>
 				<h5 class='card-title'>" .$row['tree_name']. "</h5>
 					<p class='card-text'>
-						<p>Infomation: " . $row['tree_des'] . "</p>
+						<p class='text-break'>Infomation: " . $row['tree_des'] . "</p>
 						<p>Tree Category: " . $row['tree_category'] . "</p>
 						<p>Soil Drainage: " . $row['tree_soilDrainage'] . "</p>
 						<p>Sun : ". $row['tree_sun'] ."</p>

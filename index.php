@@ -44,9 +44,6 @@ session_start();
 				echo "<a class='dropdown-item' href='tree.php?id=".$row['tree_id']."'>" .$row['tree_name']. "</a>";
 				}
 		  ?>		 
-		  
- 
-
         </div>
       </li>
 	  
@@ -62,8 +59,6 @@ session_start();
 				echo "<a class='dropdown-item' href='tree.php?id=".$row['tree_id']."'>" .$row['tree_name']. "</a>";
 				}
 		  ?>
-
-
         </div>
       </li>
 	  
@@ -76,12 +71,18 @@ session_start();
           <a class="dropdown-item" href="login.php">Admin</a>
         </div>
       </li>
-	  
     </ul>
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<a class="nav-link" href="login.php">Login <span class="sr-only"></span></a>
+		</li>
+	</ul>
+	&nbsp;&nbsp;
     <form class="form-inline my-2 my-lg-0" action="searchProcess.php" method="post" >
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="apple">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+	
   </div>
 </nav>
 
@@ -98,13 +99,17 @@ session_start();
 			  <ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			  </ol>
 			  <div class="carousel-inner">
 				<div class="carousel-item active">
 				  <img src="img/apple_dis.jpg" class="d-block w-100" alt="apple_tree" >
 				</div>
 				<div class="carousel-item">
-				  <img src="img/lemon_dis.jpg" class="d-block w-100" alt="...">
+				  <img src="img/lemon_dis.jpg" class="d-block w-100" alt="lemon">
+				</div>
+				<div class="carousel-item">
+				  <img src="img/orange_dis.jpg" class="d-block w-100" alt="orange">
 				</div>
 			  </div>
 			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -127,21 +132,21 @@ session_start();
 			<div class="d-flex justify-content-around">
 			
 				<div class="card text-center" style="width: 18rem;">
-				<img src="img/1.png" class="card-img-top" alt="...">
+				<img src="img/1.png" class="card-img-top" alt="Fruit">
 				<div class="card-body">
 				<h5 class="card-title">Fruit tree</h5>
 				<p class="card-text"></p>
-				<a href="fruit.php" class="btn btn-primary">Go to site</a>
+				<a href="fruit.php" class="btn btn-primary stretched-link">Go to site</a>
 				</div>
 				</div>		
 			
 			
 				<div class="card text-center" style="width: 18rem;">
-				<img src="img/2.png" class="card-img-top" alt="...">
+				<img src="img/2.png" class="card-img-top" alt="Hedge">
 				<div class="card-body">
 				<h5 class="card-title">Hedge</h5>
 				<p class="card-text"></p>
-				<a href="hedge.php" class="btn btn-primary">Go to site</a>
+				<a href="hedge.php" class="btn btn-primary stretched-link">Go to site</a>
 				</div>
 				</div>
 			</div>
