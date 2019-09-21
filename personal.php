@@ -31,9 +31,17 @@ while($row=mysqli_fetch_assoc($r1)){
 	$message=$row['message'];
 	$username1=$row['user_name1'];
 	$username2=$row['user_name2'];
-	echo '<h3 >'.$username1.'</h3>';
-	echo '<h4>'.$username2.'</h4>';
-	echo '<p>'.$message.'</p>';
+	$reply=$row['Reply'];
+	
+	if($reply!="YES"){
+	echo '<h3>'.$username1.'</h3>';
+	echo '<p style="text-align:left;">'.$message.'</p>';
+	}else {
+		echo '<h4>'.$username2.'</h4>';
+		echo '<p style="text-align:right;">'.$message.'</p>';
+	}
+	
+
 }
 
 if(isset($_POST['submit'])){
@@ -46,8 +54,8 @@ if(isset($_POST['submit'])){
 	
 		
 	
-		$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`)
-		VALUES ('','".$message."','".$row['id']."','".$names."','".$user."')";
+	$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`,`Reply`)
+		VALUES ('','".$message."','".$row['id']."','".$names."','".$user."','YES')";
 
 	
 	
