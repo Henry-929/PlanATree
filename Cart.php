@@ -2,6 +2,8 @@
 session_start();
 //
 $id = $_GET["id"];
+$category =$_GET["category"];
+$page =$_GET["page"];
 if(empty($_SESSION["gwc"]))
 {
 
@@ -56,7 +58,12 @@ else
             }
 
 }
-header("location:hedge.php")
 
+if($category){
+	header("location:". $category .".php");
+}
+else{
+	header("location:tree.php?id=". $id ."");
+}
 
 ?>

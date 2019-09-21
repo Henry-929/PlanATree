@@ -20,7 +20,7 @@ session_start();
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="index.php">PlantATree</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -37,11 +37,11 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
-				include ("conn.php");
-				$sql = "select tree_name from tree WHERE tree_category = 'fruit'";
+				require_once ("conn.php");
+				$sql = "select tree_id, tree_name from tree WHERE tree_category = 'fruit'";
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
-				echo "<a class='dropdown-item' href='fruitTree.php'>" .$row['tree_name']. "</a>";
+				echo "<a class='dropdown-item' href='tree.php?id=".$row['tree_id']."'>" .$row['tree_name']. "</a>";
 				}
 		  ?>		 
 		  
@@ -56,11 +56,10 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
-				include ("conn.php");
-				$sql = "select tree_name from tree WHERE tree_category = 'hedge'";
+				$sql = "select tree_id, tree_name from tree WHERE tree_category = 'hedge'";
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
-				echo "<a class='dropdown-item' href='hedge.php'>" .$row['tree_name']. "</a>";
+				echo "<a class='dropdown-item' href='tree.php?id=".$row['tree_id']."'>" .$row['tree_name']. "</a>";
 				}
 		  ?>
 
@@ -89,6 +88,10 @@ session_start();
 			<div class="row mt-1"></div>
 			<div class="row mt-2"></div>
 			<div class="row mt-3"></div>
+			<div class="row mt-4"></div>
+			<div class="row mt-5"></div>
+			<div class="row mt-6"></div>
+			<div class="row mt-7"></div>
 
 		<div class="container">
 			   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -123,17 +126,17 @@ session_start();
 			<div class="col">
 			<div class="d-flex justify-content-around">
 			
-				<div class="card" style="width: 18rem;">
+				<div class="card text-center" style="width: 18rem;">
 				<img src="img/1.png" class="card-img-top" alt="...">
 				<div class="card-body">
 				<h5 class="card-title">Fruit tree</h5>
 				<p class="card-text"></p>
-				<a href="fruitTree.php" class="btn btn-primary">Go to site</a>
+				<a href="fruit.php" class="btn btn-primary">Go to site</a>
 				</div>
 				</div>		
 			
 			
-				<div class="card" style="width: 18rem;">
+				<div class="card text-center" style="width: 18rem;">
 				<img src="img/2.png" class="card-img-top" alt="...">
 				<div class="card-body">
 				<h5 class="card-title">Hedge</h5>

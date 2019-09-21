@@ -36,7 +36,7 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
-				require_once("conn.php");
+				require_once ("conn.php");
 				$sql = "select tree_id, tree_name from tree WHERE tree_category = 'fruit'";
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
@@ -93,71 +93,78 @@ session_start();
 			<div class="row mt-6"></div>
 			<div class="row mt-7"></div>
 
-<div class="container">
+	<div class="container">
 	<div class="row">
-	<div class="col-sm-12">
-   <?php
-    
+		
+	<?php
+
+	$treeId=$_GET['id'];
+    $sql = "select * from tree WHERE tree_id = $treeId";
+    $result = $conn->query($sql);
+	while($row = $result->fetch_assoc()){
+	echo "
+	
+	<div class='col'>
+		<div class='card mb-3' style='max-width: 1280px;'>
+			<div class='row no-gutters'>
+				<div class='col-md-4'>
+					<img class='card-img-top' src='".$row['pic']."' alt='" .$row['tree_name']. "' >
+		</div>
+		<div class='col-md-8'>
+			<div class='card-body'>
+				<h5 class='card-title'>" .$row['tree_name']. "</h5>
+					<p class='card-text'>
+						<p>Infomation: " . $row['tree_des'] . "</p>
+						<p>Tree Category: " . $row['tree_category'] . "</p>
+						<p>Soil Drainage: " . $row['tree_soilDrainage'] . "</p>
+						<p>Sun : ". $row['tree_sun'] ."</p>
+						<p>Maintenance requirements Level: " . $row['tree_mainRequireLv'] . "</p>
+						<p>Max height of mature tree: " . $row['tree_maxHeight'] . "</p>
+						<p>Growth rate: " . $row['tree_growthRate'] . "</p>
+						  
+					</p>
+		</div>
+		</div>
+		</div>
+		<div class='card-footer'>
+		<div class='d-flex justify-content-around'>
+		<div class='p-2 bd-highlight'>
+		  <small class='text-muted'>Tree Stock:". $row['tree_stock'] ."</small>
+		  </div>
+		<div class='ml-auto p-2 bd-highlight'>
+		<p>Price: " . $row['tree_price'] . "</p>
+		</div>
+		<div class='ml-auto p-2 bd-highlight'>  
+		<a class='btn btn-primary btn-sm' href='Cart.php?id={$row["tree_id"]}'>Add to Cart</a>
+		</div>
+		</div>
+		</div>
+		</div>
+
+	</div>
+	";
+	}
+    ?>
+	</div>
+	</div>
+	
+			<div class="row mt-1"></div>
+			<div class="row mt-2"></div>
+			<div class="row mt-3"></div>
+			<div class="row mt-4"></div>
+
+	<nav class="navbar fixed-bottom navbar-light bg-light">
+	<?php
+	$ann=array();
     if(!empty($_SESSION["gwc"]))
     {
-        $arr = array();
-        $arr = $_SESSION["gwc"];
-		?>	
-	<table class="table table-hover">
-	  <thead>
-		<tr>
-		  <th scope="col">Tree Name</th>
-		  <th scope="col">Unit Price</th>
-		  <th scope="col">Quantity</th>
-		  <th scope="col"> </th>
-		</tr>
-	  </thead>
-	  <tbody>
-    <?php
-	}
-	else{
-		$arr = 0;
-		echo "<div class='col'>
-		<div class='card text-center'>
-		<div class='card-body'>
-			<h5 class='card-title'>You don't have anything in Cart!</h5>
-			<a href='index.php' class='btn btn-primary'>Continue shopping</a>
-		</div>
-		</div>
-		</div>";
-	}
-
-	if(!empty($_SESSION["gwc"])){
-		
-    foreach ($arr as $v)
-    {
- 
-        $sql = "select * from tree WHERE tree_id = '{$v[0]}'";
-		$result = $conn->query($sql);
-		
-		
-		while($row = $result->fetch_assoc()){
-            
-				echo "
-		<tr>
-      <td>{$row['tree_name']}</td>
-      <td>$". $row['tree_price']. "</td>
-      <td>{$v[1]}</td>
-	  <td><a class='btn btn-primary btn-sm' href='delectCart.php?id={$row['tree_id']}'>Remove</a> </td>
-    </tr>";
-			
-		}
-		
+        $ann=$_SESSION["gwc"];
     }
-	echo"</tbody>";
-		echo"</table></div>";
-		echo "<div class='col-sm-12'>";
-		echo "<a class='btn btn-primary btn-lg btn-block' href='index.php'>Continue Shopping</a>";
-		echo "<a class='btn btn-primary btn-lg btn-block' href='#'>Proceed to Checkout</a>";
-		
-	$aa=0;
-	foreach($arr as $k)
+
+    $aa=0;
+    foreach($ann as $k)
     {
+
         $k[0];
         $k[1];
         $sql1="select tree_price from tree where tree_id='{$k[0]}'";
@@ -168,18 +175,21 @@ session_start();
             $aa=$aa + $row['tree_price'] * $k[1];
         }
     }
-		
-		echo "<p class='text-center'>Total:$".$aa."</p>";
-		echo "</div>";
-	    
-		}
-    ?>
+
+		echo "Total:$".$aa."";
+	?>
 	
-
-
-     
+	
+	<a class="btn btn-primary" href="viewCart.php" role="button">
+	<svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" /><circle cx="25" cy="27" r="2" /><circle cx="12" cy="27" r="2" /></svg> View Cart</a>
+	</nav>
+</div>
 
 </div>
-</div>
+
+</main>
+
+
+
 </body>
 </html>

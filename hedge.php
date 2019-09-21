@@ -19,7 +19,7 @@ session_start();
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="index.php">PlantATree</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -36,11 +36,11 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
-				include ("conn.php");
-				$sql = "select tree_name from tree WHERE tree_category = 'fruit'";
+				require_once ("conn.php");
+				$sql = "select tree_id, tree_name from tree WHERE tree_category = 'fruit'";
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
-				echo "<a class='dropdown-item' href='fruitTree.php'>" .$row['tree_name']. "</a>";
+				echo "<a class='dropdown-item' href='tree.php?id=".$row['tree_id']."'>" .$row['tree_name']. "</a>";
 				}
 		  ?>		 
 		  
@@ -55,11 +55,11 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <?php
-				include ("conn.php");
-				$sql = "select tree_name from tree WHERE tree_category = 'hedge'";
+
+				$sql = "select tree_id, tree_name from tree WHERE tree_category = 'hedge'";
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()){
-				echo "<a class='dropdown-item' href='hedge.php'>" .$row['tree_name']. "</a>";
+				echo "<a class='dropdown-item' href='tree.php?id=".$row['tree_id']."'>" .$row['tree_name']. "</a>";
 				}
 		  ?>
 
@@ -85,54 +85,62 @@ session_start();
   </div>
 </nav>
 
-<div class="container">
-	<div class="row">
 		<div class="row mt-1"></div>
 		<div class="row mt-2"></div>
 		<div class="row mt-3"></div>
 		<div class="row mt-4"></div>
-	<div class="card-deck shadow p-3 mb-5 bg-white rounded">
-		
+		<div class="row mt-5"></div>
+		<div class="row mt-6"></div>
+		<div class="row mt-7"></div>
+
+<div class="container">
+	<div class="row">
+	
 	<?php
-    include ("conn.php");
+
     $sql = "select * from tree WHERE tree_category = 'hedge'";
     $result = $conn->query($sql);
 	while($row = $result->fetch_assoc()){
 	echo "
-	<div class='card'>
+	<div class='col-sm-6'>
+	<div class='card-deck'>
+	<div class='card text-center'>
     <img class='card-img-top' src='".$row['pic']."' alt='" .$row['tree_name']. "' >
     <div class='card-body'>
-      <h5 class='card-title'>" .$row['tree_name']. "</h5>
-      <p class='card-text'>
-	  
-	<p>Infomation: " . $row['tree_des'] . "</p>
-	<p>Tree Category: " . $row['tree_category'] . "</p>
-	<p>Soil Drainage: " . $row['tree_soilDrainage'] . "</p>
-	<p>Sun : ". $row['tree_sun'] ."</p>
-	<p>Maintenance requirements Level: " . $row['tree_mainRequireLv'] . "</p>
-	<p>Max height of mature tree: " . $row['tree_maxHeight'] . "</p>
-	<p>Growth rate: " . $row['tree_growthRate'] . "</p>
-	<p><Mark>Price: " . $row['tree_price'] . "</p>  
+      <h2 class='card-title'>" .$row['tree_name']. "</h2>
+      <p class='card-text '>
+	   <a class='btn btn-primary btn-sm' href='tree.php?id=".$row['tree_id']."' role='button'>Learn more</a>
 	</p>
     </div>
     <div class='card-footer'>
-	<div class='d-flex bd-highlight mb-2'>
+	<div class='d-flex justify-content-around'>
 	<div class='p-2 bd-highlight'>
       <small class='text-muted'>Tree Stock:". $row['tree_stock'] ."</small>
 	  </div>
+	<div class='ml-auto p-2 bd-highlight'>
+		<p>Price: " . $row['tree_price'] . "</p>
+	</div>
 	<div class='ml-auto p-2 bd-highlight'>  
-	<a class='btn btn-primary btn-sm' href='hedgeCart.php?id={$row["tree_id"]}'>Add to Cart</a>
+	<a class='btn btn-primary btn-sm' href='Cart.php?id={$row["tree_id"]}&category={$row["tree_category"]}'>Add to Cart</a>
 	</div>
 	</div>
 	</div>
 	</div>
-	
+	</div>
+	</div>
 	";
 	}
-	echo "</div>";
+	
     ?>
-		
-
+	
+	</div>
+	</div>
+			
+			<div class="row mt-1"></div>
+			<div class="row mt-2"></div>
+			<div class="row mt-3"></div>
+			<div class="row mt-4"></div>
+	
 	<nav class="navbar fixed-bottom navbar-light bg-light">
 	<?php
 	$ann=array();
@@ -167,7 +175,7 @@ session_start();
 
 </div>
 
-</main>
+
 
 
 
