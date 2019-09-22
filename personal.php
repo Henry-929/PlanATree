@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
 	
 	
 	 if(mysqli_query($conn,$q)){
-		echo '<h5 >'.$_SESSION['username'].'</h5>';
+		echo '<h5 >'.$_SESSION['user'].'</h5>';
 		echo '<p>'.$message.'</p>';
 		
 	}; 
