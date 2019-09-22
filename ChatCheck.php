@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('conn.php');
+
 
 $user=$_SESSION['user'];
 if(isset($_SESSION['user'])){
