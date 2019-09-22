@@ -20,7 +20,7 @@ echo '<a href="logout.php"> Logout</a><br><br>';
 <div id="main">
 <?php
 include_once('conn.php');
-$q4='SELECT `id` FROM `user`';
+$q4='SELECT `id` FROM `customer`';
 $r2= mysqli_query($conn,$q4);
 $array=array();
 $id=array();
