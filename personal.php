@@ -46,7 +46,7 @@ while($row=mysqli_fetch_assoc($r1)){
 
 if(isset($_POST['submit'])){
 	$message=$_POST['message'];
-	$user=$_SESSION['username'];
+	$user=$_SESSION['user'];
 		
 	$f='SELECT `id` FROM `customer` WHERE `user_name`="'.$names.'"';
 	$x=mysqli_query($conn,$f);
