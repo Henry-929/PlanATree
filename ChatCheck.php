@@ -2,8 +2,8 @@
 session_start();
 require_once('conn.php');
 
-$user=$_SESSION['username'];
-if(isset($_SESSION['username'])){
+$user=$_SESSION['user'];
+if(isset($_SESSION['user'])){
 if($user=="cool"){
 	header ("location: ChatList.php");
 	
