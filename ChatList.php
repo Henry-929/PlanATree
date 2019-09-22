@@ -55,6 +55,11 @@ for($i=0;$i<count($array);$i++){
 
 }
 
+//This is for the notification bell
+echo '<a href="#" class="inbox">
+			<span class="image"> <img src="img/YouTube-Bell-Icon-PNG-Transparent-Image.png"></span>
+			<span class="bell"> '.count($listed).' </span>
+	</a>';
 
 
 ?>
