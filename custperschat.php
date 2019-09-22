@@ -22,16 +22,23 @@ echo '<a href="logout.php"> Logout</a>';
 include ('conn.php');
 $user=$_SESSION['user'];
 
-$q1='SELECT * FROM `personal_message` WHERE `user_name1`="'.$user.'" AND `user_name2`="cool"  ';
+$q1='SELECT * FROM `personal_message` WHERE `user_name1`="'.$user.'"  ';
 $r1= mysqli_query($conn,$q1);
 
 while($row=mysqli_fetch_assoc($r1)){
 	$message=$row['message'];
 	$username1=$row['user_name1'];
 	$username2=$row['user_name2'];
-	echo '<h3 >'.$username1.'</h3>';
+	$reply=$row['Reply'];
+	
+	if($reply=="YES"){
 	echo '<h3>'.$username2.'</h3>';
-	echo '<p>'.$message.'</p>';
+	echo '<p style="text-align:left;">'.$message.'</p>';
+	}else {
+		echo '<h4>'.$username1.'</h4>';
+		echo '<p style="text-align:right;">'.$message.'</p>';
+	}
+	
 }
 
 if(isset($_POST['submit'])){
@@ -42,14 +49,14 @@ if(isset($_POST['submit'])){
 	$x=mysqli_query($conn,$f);
 	$row=mysqli_fetch_assoc($x);
 	
-	$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`)
-		VALUES ('','".$message."','".$row['id']."','".$user."','cool')";
+	$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`,`Reply`)
+		VALUES ('','".$message."','".$row['id']."','".$user."','cool','')";
 	
 	
 	
 	if(mysqli_query($conn,$q)){
 		echo '<h4 >'.$_SESSION['user'].'</h4>';
-		echo '<p>'.$message.'</p>';
+		echo '<p style="text-align:right;">'.$message.'</p>';
 		
 	};
 	
