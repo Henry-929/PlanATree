@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 !DOCTYPE html>
 <html lang="en">
 
@@ -92,34 +95,7 @@
 			<div class="row mt-7"></div>
 			<div class="row mt-8"></div>
 			<div class="row mt-9"></div>
-<?php
-session_start();
-require_once('conn.php');
 
-if(isset($_POST['login'])){
-	$user=$_POST['username'];
-	$pass=$_POST['password'];
-	
-	if($user!=""&&$pass!=""){
-		
-		$q='SELECT * FROM `user` WHERE `user_name`="'.$user.'" AND `password`="'.$pass.'"';
-		$R=mysqli_query($conn,$q);
-		if(mysqli_num_rows($R)>0){
-			$_SESSION['username']=$user;
-			if($user=="cool"){
-			header("location:ChatList.php");
-			}else{
-				header("location:custperschat.php");
-			}
-			echo "Successfully logged in";
-		}else{
-			echo "Incoorect Password or User Name";
-		} 
-		
-	}
-}
-
-?>
 <div class="container">
 <div class="d-flex justify-content-center">
 <h1>Login</h1>
@@ -129,12 +105,12 @@ if(isset($_POST['login'])){
 			<div class="row mt-2"></div>
 			<div class="row mt-3"></div>
 
-<form method="post" >
+<form action="loginProcess.php" method="post" >
   <div class="form-group row">
 	<div class="col-sm-4"></div>
     <label for="inputUsername" class="col-sm-1 col-form-label">Username</label>
     <div class="col-sm-3">
-      <input type="email" class="form-control" name="username" placeholder="Userame">
+      <input type="text" class="form-control" name="username" placeholder="Userame">
     </div>
 	<div class="col-sm-4"></div>
   </div>
@@ -165,10 +141,36 @@ if(isset($_POST['login'])){
   </div>
   <div class="col-sm-3"></div>
   </div>
-  </div>
+  
+  
+<?php
+	$err=isset($_GET["err"])?$_GET["err"]:"";
+	switch($err) {
+		case 1:
+		echo "
+		<div class='row'>
+		<div class='col-sm'></div>
+		<div class='alert alert-danger col-sm text-center' role='alert'>
+		  The Username or Password is wrong!
+		</div>
+		<div class='col-sm'></div>
+		</div>
+		";
+		break;
+		case 2:
+		echo "
+		<div class='row'>
+		<div class='col-sm-4'></div>
+		<div class='alert alert-danger col-sm text-center' role='alert'>
+		  Please fill Username and Password!
+		</div>
+		<div class='col-sm-4'></div>
+		</div>
+		";
+		break;
+	}
+  ?>
+</div>
 </form>
-
 </body>
-
-
 </html>
