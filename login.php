@@ -68,7 +68,7 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="login.php">Community</a>
-          <a class="dropdown-item" href="login.php">Admin</a>
+          <a class="dropdown-item" href="ChatCheck.php">Admin</a>
         </div>
       </li>
     </ul>
