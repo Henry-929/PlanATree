@@ -62,14 +62,8 @@ session_start();
         </div>
       </li>
 	  
-	  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Chat
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="login.php">Community</a>
-          <a class="dropdown-item" href="ChatCheck.php">Admin</a>
-        </div>
+	  <li class="nav-item ">    
+		  <a class='nav-link text-decoration-none' href='ChatCheck.php' >Chat</a>
       </li>
     </ul>
 	<ul class="navbar-nav">
