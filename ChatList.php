@@ -25,7 +25,6 @@ $r2= mysqli_query($conn,$q4);
 $array=array();
 $id=array();
 $username1=array();
-$listed=array();
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 	
@@ -39,16 +38,15 @@ while($row=mysqli_fetch_assoc($r1)){
 	$username1[]=$row['user_name1'];
 	}
 
-for($i=0;$i<count($username1);$i++){
+for($i=0;$i<count($array);$i++){
 	
 
 	if(!empty(count($id)) AND  !empty($id[$i])){
-	if(in_array($id[$i],$array)){
-	if(!(in_array($id[$i],$listed))){
+	if($id[$i]===$array[$i]){
 		$name=$username1[$i];
 	
 	echo '<a href="personal.php?id='.$name.'">'.$username1[$i].'</a><br>';
-	$listed[$i]=$id[$i];}
+	
 	}}
 	else if(empty(count($id))){
 		echo "No new Message";

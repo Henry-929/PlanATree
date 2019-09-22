@@ -29,9 +29,6 @@
 						$diff=date_diff($date1,$date2);
 						$diffTime=$diff->format("%a");
 						
-						//echo $diff->format("%a");
-						//echo $diffTime;
-						
 						//no more than 12 months
 						if($diffTime<366){
 						$_SESSION['vip']= $row['purchased'];

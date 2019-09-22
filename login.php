@@ -74,8 +74,19 @@ session_start();
     </ul>
 	<ul class="navbar-nav">
 		<li class="nav-item active">
-			<a class="nav-link" href="login.php">Login <span class="sr-only"></span></a>
-		</li>
+			<?php
+			if(isset($_SESSION['user'])){
+				echo "<a class='nav-link' >Welcome, ".$_SESSION['user']."</a>";
+				echo "</li>";
+				echo "<li class='nav-item'>";
+				echo "<a class='nav-link text-decoration-none' href='logout.php' >Log Out</a>";
+				echo "</li>";
+			}else{
+				echo "<a class='nav-link' href='login.php'>Login</span></a>
+				</li>";
+			}
+			?>
+		
 	</ul>
 	&nbsp;&nbsp;
     <form class="form-inline my-2 my-lg-0" action="searchProcess.php" method="post" >
