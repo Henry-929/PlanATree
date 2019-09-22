@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Chat List</title>
-
+<link href="ChatList.css" type="text/css" rel="stylesheet">
 </head>
 <body> 
 
