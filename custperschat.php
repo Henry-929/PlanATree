@@ -8,9 +8,9 @@
 
 <?php
 session_start();
-$user=$_SESSION['username'];
-if(isset($_SESSION['username'])){
-echo '<h1> Welcome Customer '.$_SESSION['username'].'</h1><br>';
+$user=$_SESSION['user'];
+if(isset($_SESSION['user'])){
+echo '<h1> Welcome Customer '.$_SESSION['user'].'</h1><br>';
 echo '<a href="logout.php"> Logout</a>';
 }else{
 	header("location: login.php");
@@ -20,7 +20,7 @@ echo '<a href="logout.php"> Logout</a>';
 <div id="message_area">
 <?php
 include ('conn.php');
-$user=$_SESSION['username'];
+$user=$_SESSION['user'];
 
 $q1='SELECT * FROM `personal_message` WHERE `user_name1`="'.$user.'" AND `user_name2`="cool"  ';
 $r1= mysqli_query($conn,$q1);
@@ -36,7 +36,7 @@ while($row=mysqli_fetch_assoc($r1)){
 
 if(isset($_POST['submit'])){
 	$message=$_POST['message'];
-	$user=$_SESSION['username'];
+	$user=$_SESSION['user'];
 	
 	$f='SELECT `id` FROM `customer` WHERE `user_name`="'.$user.'"';
 	$x=mysqli_query($conn,$f);
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 	
 	
 	if(mysqli_query($conn,$q)){
-		echo '<h4 >'.$_SESSION['username'].'</h4>';
+		echo '<h4 >'.$_SESSION['user'].'</h4>';
 		echo '<p>'.$message.'</p>';
 		
 	};
