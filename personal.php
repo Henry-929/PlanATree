@@ -8,9 +8,9 @@
 
 <?php
 session_start();
-$user=$_SESSION['username'];
-if(isset($_SESSION['username'])){
-echo '<h1> Welcome Admin '.$_SESSION['username'].'</h1><br>';
+$user=$_SESSION['user'];
+if(isset($_SESSION['user'])){
+echo '<h1> Welcome Admin '.$_SESSION['user'].'</h1><br>';
 echo '<a href="logout.php"> Logout</a>';
 }else{
 	header("location: login.php");
