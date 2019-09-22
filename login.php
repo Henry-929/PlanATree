@@ -141,7 +141,7 @@ session_start();
   <div class="form-group row">
 	<div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
     </div>
 	<div class="col-sm-4"></div>
   </div>

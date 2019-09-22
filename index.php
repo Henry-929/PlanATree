@@ -68,7 +68,7 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="login.php">Community</a>
-          <a class="dropdown-item" href="login.php">Admin</a>
+          <a class="dropdown-item" href="ChatCheck.php">Admin</a>
         </div>
       </li>
     </ul>
@@ -106,11 +106,11 @@ session_start();
 			<div class="row mt-7"></div>
 
 		<div class="container">
-			   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			   <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 			  <ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselIndicators" data-slide-to="2"></li>
 			  </ol>
 			  <div class="carousel-inner">
 				<div class="carousel-item active">
@@ -123,11 +123,11 @@ session_start();
 				  <img src="img/orange_dis.jpg" class="d-block w-100" alt="orange">
 				</div>
 			  </div>
-			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
 			  </a>
-			  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			  </a>
@@ -145,9 +145,9 @@ session_start();
 				<div class="card text-center" style="width: 18rem;">
 				<img src="img/1.png" class="card-img-top" alt="Fruit">
 				<div class="card-body">
-				<h5 class="card-title">Fruit tree</h5>
+				<h5 class="card-title">Fruit Tree</h5>
 				<p class="card-text"></p>
-				<a href="fruit.php" class="btn btn-primary stretched-link">Go to site</a>
+				<a href="fruit.php" class="btn btn-primary stretched-link">View</a>
 				</div>
 				</div>		
 			
@@ -157,7 +157,7 @@ session_start();
 				<div class="card-body">
 				<h5 class="card-title">Hedge</h5>
 				<p class="card-text"></p>
-				<a href="hedge.php" class="btn btn-primary stretched-link">Go to site</a>
+				<a href="hedge.php" class="btn btn-primary stretched-link">View</a>
 				</div>
 				</div>
 			</div>

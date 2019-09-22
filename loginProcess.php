@@ -41,7 +41,7 @@
 						$row3 = mysqli_fetch_array($type);
 						
 						//Wholesale customers such as other nurseries and certain landscaping companies get special prices 
-						if($row3['type']=='wholeseal'){
+						if($row3['type']=='wholesale'){
 							$_SESSION['vip']=100;
 						}
 
