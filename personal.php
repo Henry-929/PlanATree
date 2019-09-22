@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 	$message=$_POST['message'];
 	$user=$_SESSION['username'];
 		
-	$f='SELECT `id` FROM `user` WHERE `user_name`="'.$names.'"';
+	$f='SELECT `id` FROM `customer` WHERE `user_name`="'.$names.'"';
 	$x=mysqli_query($conn,$f);
 	$row=mysqli_fetch_assoc($x);
 	
