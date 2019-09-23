@@ -108,7 +108,8 @@ session_start();
 
 
 <div class="container">
-<div class="overflow-auto d-flex flex-column shadow p-3 mb-5 bg-white rounded" id="overflow" style="height: 450px;">
+<div class="d-flex flex-column shadow p-3 mb-5 bg-white rounded"  >
+<div class="overflow-auto" id="overflow" style="height: 550px;">
 <?php
 
 	if(isset($_GET['id'])){
@@ -197,7 +198,7 @@ if(isset($_POST['submit'])){
 	</div>
 
 </div>
-
+</div>
 </body>
 
 </html>
