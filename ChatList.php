@@ -115,33 +115,34 @@ $username1=array();
 $listed=array();
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
-	
 }
-$q1='SELECT * FROM `personal_message` ';
+$q1='SELECT user_id, user_name1 FROM `personal_message` ';
 $r1= mysqli_query($conn,$q1);
 
 while($row=mysqli_fetch_assoc($r1)){
 	$id[]=$row['user_id'];
-	
 	$username1[]=$row['user_name1'];
 	}
 
 	echo "<ul class='list-group col-sm-6'>";
-for($i=0;$i<count($array);$i++){
+for($i=1;$i<count($id);$i++){
 	
 
 	if(!empty(count($id)) AND  !empty($id[$i])){
-	if(in_array($id[$i],$array)){	
+
+	if(in_array($id[$i],$array)){
+
 	if(!(in_array($id[$i],$listed))){
 		$name=$username1[$i];
+		$listed[$i]=$id[$i];		
 	echo "
 		  <li class='list-group-item d-flex justify-content-between align-items-center'>
-			<h4><a class='stretched-link text-decoration-none' href='personal.php?id=".$name."'>".$username1[$i]."</a></h4><br>
+			<h4><a class='stretched-link text-decoration-none' href='personal.php?id=".$name."'>".$name."</a></h4><br>
 			<span class='badge badge-primary badge-pill'>1</span>
 		  </li>";
-	
-	$listed[$i]=$id[$i];}
-	}}
+	}
+	}
+	}
 	else if(empty(count($id))){
 		echo "<div class='col'>
 		<div class='card text-center'>
