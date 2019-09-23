@@ -137,14 +137,14 @@ while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 }
 $q2='SELECT user_id, user_name1 FROM `personal_message` ';
-$q1='SELECT * FROM `personal_message` WHERE  `Seen_Status`!="seen" AND Reply!="YES"';
+//$q1='SELECT * FROM `personal_message` WHERE  `Seen_Status`!="seen" AND Reply!="YES"';
 $q3='SELECT * FROM `personal_message` WHERE  `Seen_Status`="seen" ';
 $r1= mysqli_query($conn,$q1);
 $r2= mysqli_query($conn,$q2);
 $r3= mysqli_query($conn,$q3);
 
 if ($r2->num_rows >0){
-	while($row=mysqli_fetch_assoc($r1)){
+	while($row=mysqli_fetch_assoc($r2)){
 		$id[]=$row['user_id'];
 		$username1[]=$row['user_name1'];
 		}
