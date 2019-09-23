@@ -80,11 +80,19 @@ session_start();
 				$rown=mysqli_fetch_assoc($num);
 				$num=$rown['total'];
 				$notification=$num;
+				if($num>0){
+					echo '<script>
+					sound= new Audio();
+					sound.src= "Ting.mp3";
+					sound.autoplay=true;
+					</script>';
+				}
 				echo "<a href='ChatCheck.php' class='nav-link' >
 				<button type='button' class='btn btn-primary btn-sm'>
 				".$_SESSION['user']." <span class='badge badge-light'>$notification</span>
 				<span class='sr-only'>unread messages</span>
-				</button>			
+				</button>
+				
 				</a>";
 				echo "</li>";
 				echo "<li class='nav-item'>";
