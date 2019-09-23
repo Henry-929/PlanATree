@@ -130,6 +130,7 @@ $listed=array();
 $message=array();
 $count=0;
 $notification=0;
+$username1seen=array();
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 }
@@ -158,10 +159,10 @@ if ($r1->num_rows >0){
 				$q='SELECT `message` FROM `personal_message` WHERE  `user_name1`="'.$name.'" AND `Seen_Status`!="seen" AND `Reply`!="YES"';
 				$rs= mysqli_query($conn,$q);
 				
-				$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE `Seen_Status`!="seen" AND `Reply`!="YES"';
+				$n='SELECT `user_name1` FROM `personal_message` WHERE `Seen_Status`="seen" AND `Reply`!="YES"';
 				$num=mysqli_query($conn,$n);
 				$rown=mysqli_fetch_assoc($num);
-				$num=$rown['total'];
+				$num=$rown['user_name1'];
 				$notification=$num;
 				
 				while($row=mysqli_fetch_assoc($rs)){
@@ -178,13 +179,18 @@ if ($r1->num_rows >0){
 				
 				$message=array();
 				$listed[$i]=$id[$i];
-				
+				echo "
+				  <li class='list-group-item d-flex justify-content-between align-items-center'>
+					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$name."'>".$name."</a></h4><br>
+					<span class='badge badge-primary badge-pill'>".$count."</span>
+				  </li>";
 			}
 			}
 			}
 					
 			
 		}
+		
 		
 }
 	else{
