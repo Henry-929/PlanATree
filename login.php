@@ -188,6 +188,17 @@ session_start();
 		</div>
 		";
 		break;
+		case 3:
+		echo "
+		<div class='row'>
+		<div class='col-sm-4'></div>
+		<div class='alert alert-success col-sm text-center' role='alert'>
+		  Registration Successful! You can log in now.
+		</div>
+		<div class='col-sm-4'></div>
+		</div>
+		";
+		break;
 	}
   ?>
 </div>
