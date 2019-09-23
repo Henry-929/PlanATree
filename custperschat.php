@@ -108,7 +108,7 @@ session_start();
 
 
 <div class="container">
-<div class="overflow-auto d-flex flex-column shadow p-3 mb-5 bg-white rounded" id="overflow" style="height: 50%;">
+<div class="overflow-auto d-flex flex-column shadow p-3 mb-5 bg-white rounded" id="overflow" style="height: 450px;">
 
 <?php
 
@@ -139,13 +139,13 @@ while($row=mysqli_fetch_assoc($r1)){
 		
 		";		
 	}else {	
-		echo "<div class=' d-flex justify-content-end'>
+		echo "<div class=' d-flex flex-row-reverse'>
 		<h3>".$username1."</h3>
 		
 		</div>";
 		
 		echo "
-		<div class=' d-flex justify-content-end'>
+		<div class=' d-flex flex-row-reverse'>
 		
 		<p>".$message."</p>
 		
