@@ -130,6 +130,7 @@ $listed=array();
 $message=array();
 $count=0;
 $notification=0;
+$seenid=array();
 $username1seen=array();
 $username1WITHseen=array();
 while($rows=mysqli_fetch_assoc($r2)){
@@ -192,10 +193,10 @@ if ($r2->num_rows >0){
 			}
 			}
 					while($row=mysqli_fetch_assoc($r3)){
-					$id[]=$row['user_id'];
+					$seenid[]=$row['user_id'];
 					$username1seen[]=$row['user_name1'];}
 					
-					if(!(in_array($username1seen[$i],$listed))){
+					if(!(in_array($seenid[$i],$listed))){
 			
 					if(!(in_array($username1seen[$i],$username1WITHseen))){
 					echo "
