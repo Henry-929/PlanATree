@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -125,15 +125,9 @@ session_start();
 	$reply=$row['Reply'];
 	
 	if($reply!="YES"){
-	echo "<div class='col d-flex justify-content-start'>
+	echo "<div class='justify-content-start'>
 	
 	<h3>".$username1."</h3>
-	
-	</div>";
-	
-	echo "
-	<div class='col d-flex justify-content-start'>
-	
 	<p>".$message."</p>
 	
 	</div>";

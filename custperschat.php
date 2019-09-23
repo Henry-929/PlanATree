@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -139,13 +139,13 @@ while($row=mysqli_fetch_assoc($r1)){
 		
 		";		
 	}else {	
-		echo "<div class='col d-flex justify-content-end'>
+		echo "<div class=' d-flex justify-content-end'>
 		<h3>".$username1."</h3>
 		
 		</div>";
 		
 		echo "
-		<div class='col d-flex justify-content-end'>
+		<div class=' d-flex justify-content-end'>
 		
 		<p>".$message."</p>
 		
