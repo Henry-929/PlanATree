@@ -125,27 +125,27 @@ session_start();
 	$reply=$row['Reply'];
 	
 	if($reply!="YES"){
-	echo "<div class='col d-flex justify-content-start'>
+	echo "<div class='d-flex flex-row'>
 	
 	<h3>".$username1."</h3>
 	
 	</div>";
 	
 	echo "
-	<div class='col d-flex justify-content-start'>
+	<div class='d-flex flex-row'>
 	
 	<p>".$message."</p>
 	
 	</div>";
 	}else {
 		echo "
-		<div class='col d-flex flex-row-reverse'>
+		<div class='d-flex flex-row-reverse'>
 		
 		<h3>".$username2."</h3>
 		
 		</div>";
 		echo "
-		<div class='col d-flex flex-row-reverse'>
+		<div class='d-flex flex-row-reverse'>
 		
 		<p>".$message."</p>
 		
