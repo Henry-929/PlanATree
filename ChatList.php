@@ -134,17 +134,21 @@ $username1seen=array();
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 }
-//$q1='SELECT user_id, user_name1 FROM `personal_message` ';
+$q2='SELECT user_id, user_name1 FROM `personal_message` ';
 $q1='SELECT * FROM `personal_message` WHERE  `Seen_Status`!="seen" AND Reply!="YES"';
+$q3='SELECT * FROM `personal_message` WHERE  `Seen_Status`="seen" ';
 $r1= mysqli_query($conn,$q1);
+$r2= mysqli_query($conn,$q2);
+$r3= mysqli_query($conn,$q3);
 
-
-if ($r1->num_rows >0){
+if ($r2->num_rows >0){
 	while($row=mysqli_fetch_assoc($r1)){
 		$id[]=$row['user_id'];
 		$username1[]=$row['user_name1'];
 		}
+		
 
+		
 	echo "<div class='col-sm-6'>
 			<ul class='list-group'>";
 		for($i=0;$i<count($username1);$i++){
@@ -179,16 +183,21 @@ if ($r1->num_rows >0){
 				
 				$message=array();
 				$listed[$i]=$id[$i];
-				echo "
-				  <li class='list-group-item d-flex justify-content-between align-items-center'>
-					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$name."'>".$name."</a></h4><br>
-					<span class='badge badge-primary badge-pill'>".$count."</span>
-				  </li>";
+				
 			}
 			}
 			}
 					
 			
+		}
+		while($row=mysqli_fetch_assoc($r3)){
+		$id[]=$row['user_id'];
+		$username1[]=$row['user_name1'];
+		echo "
+				  <li class='list-group-item d-flex justify-content-between align-items-center'>
+					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$row['user_name1']."'>".$row['user_name1']."</a></h4><br>
+					<span class='badge badge-primary badge-pill'>'0'</span>
+				  </li>";
 		}
 		
 		
