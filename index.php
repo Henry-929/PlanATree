@@ -80,6 +80,11 @@ session_start();
 				$rown=mysqli_fetch_assoc($num);
 				$num=$rown['total'];
 				$notification=$num;
+				if(isset($_GET['sound'])){
+					$sound_num=$_GET['sound'];
+					
+				}
+				if($sound_num!=1){
 				if($num>0){
 					echo '<script>
 					sound= new Audio();
@@ -87,7 +92,7 @@ session_start();
 					sound.autoplay=true;
 					</script>';
 					
-				}
+				}}
 				echo "<a href='ChatCheck.php' class='nav-link' >
 				<button type='button' class='btn btn-primary btn-sm'>
 				".$_SESSION['user']." <span class='badge badge-light'>$notification</span>
