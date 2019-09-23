@@ -127,7 +127,7 @@ session_start();
 <div class="overflow-auto" id="overflow" style="height: 32em;">
 <?php
 
-	if((isset($_GET['username'])) || (isset( $_GET['seen']))){
+	if((isset($_GET['username'])) && (isset( $_GET['seen']))){
 	$names=$_GET['username'];
 	$seen=$_GET['seen'];
 	}
