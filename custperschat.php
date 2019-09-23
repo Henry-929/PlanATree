@@ -77,7 +77,22 @@ session_start();
 		<li class="nav-item active">
 			<?php
 			if(isset($_SESSION['user'])){
-				echo "<a class='nav-link' >Welcome, ".$_SESSION['user']."</a>";
+				$session=$_SESSION['user'];
+				if($session=="cool"){
+					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE `Seen_Status`!="seen" AND `Reply`!="YES"';
+				}else{
+					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE user_name1="'.$_SESSION["user"].'" AND `Seen_Status`!="seen" AND `Reply`="YES"';
+				}
+				$num=mysqli_query($conn,$n);
+				$rown=mysqli_fetch_assoc($num);
+				$num=$rown['total'];
+				$notification=$num;
+				echo "<a href='ChatCheck.php' class='nav-link' >
+				<button type='button' class='btn btn-primary btn-sm'>
+				".$_SESSION['user']." <span class='badge badge-light'>$notification</span>
+				<span class='sr-only'>unread messages</span>
+				</button>			
+				</a>";
 				echo "</li>";
 				echo "<li class='nav-item'>";
 				echo "<a class='nav-link text-decoration-none' href='logout.php' >Log Out</a>";
@@ -109,7 +124,7 @@ session_start();
 
 <div class="container">
 <div class="d-flex flex-column shadow p-3 mb-5 bg-white rounded"  >
-<div class="overflow-auto" id="overflow" style="height: 550px;">
+<div class="overflow-auto" id="overflow" style="height: 32em;">
 <?php
 
 $user=$_SESSION['user'];
@@ -135,9 +150,10 @@ while($row=mysqli_fetch_assoc($r1)){
 		
 		<p>".$message."</p>
 		
-		</div>
+		</div>";
+		$cSeen="UPDATE `personal_message` SET `Seen_Status`='seen' WHERE `user_name1`='".$username1."' AND `Reply`='YES'";
+		mysqli_query($conn,$cSeen);	
 		
-		";		
 	}else {	
 		echo "<div class='d-flex flex-row-reverse'>
 		<h3>".$username1."</h3>
