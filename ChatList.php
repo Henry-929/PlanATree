@@ -185,18 +185,7 @@ if ($r2->num_rows >0){
 				
 				$message=array();
 				$listed[$i]=$id[$i];
-				$row=mysqli_fetch_assoc($r3)
-				if(!(in_array($seenid[$i],$listed))){
-					
-					if(!(in_array($username1seen[$i],$username1WITHseen))){
-					
-					echo "
-				  <li class='list-group-item d-flex justify-content-between align-items-center'>
-					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$username1seen[$i]."'>".$username1seen[$i]."</a></h4><br>
-					<span class='badge badge-primary badge-pill'>0</span>
-				  </li>";
-					$username1WITHseen[$i]=$username1seen[$i];		
-					}}
+				
 		
 				
 			}
@@ -204,24 +193,7 @@ if ($r2->num_rows >0){
 			}
 					
 		}
-				/* while(){
-					$seenid[]=$row['user_id'];
-					$username1seen[]=$row['user_name1'];}
-					
-					for($i=0;$i<count($username1seen);$i++){
-					if(!(in_array($seenid[$i],$listed))){
-					
-					if(!(in_array($username1seen[$i],$username1WITHseen))){
-					
-					echo "
-				  <li class='list-group-item d-flex justify-content-between align-items-center'>
-					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$username1seen[$i]."'>".$username1seen[$i]."</a></h4><br>
-					<span class='badge badge-primary badge-pill'>0</span>
-				  </li>";
-					$username1WITHseen[$i]=$username1seen[$i];		
-					}}
-					}
-	 */
+	
 		
 		
 }
