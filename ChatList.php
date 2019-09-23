@@ -133,7 +133,8 @@ $notification=0;
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 }
-$q1='SELECT user_id, user_name1 FROM `personal_message` ';
+//$q1='SELECT user_id, user_name1 FROM `personal_message` ';
+$q1='SELECT * FROM `personal_message` WHERE  `Seen_Status`!="seen" AND Reply!="YES"';
 $r1= mysqli_query($conn,$q1);
 
 
