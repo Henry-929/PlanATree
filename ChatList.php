@@ -190,14 +190,21 @@ if ($r2->num_rows >0){
 					
 			
 		}
+		
 		while($row=mysqli_fetch_assoc($r3)){
 		$id[]=$row['user_id'];
-		$username1[]=$row['user_name1'];
+		$row['user_name1'];
+		if(!(in_array($row['user_name1'],$listed))){
+			
+		if(!(in_array($row['user_name1'],$username1seen))){
 		echo "
 				  <li class='list-group-item d-flex justify-content-between align-items-center'>
 					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$row['user_name1']."'>".$row['user_name1']."</a></h4><br>
-					<span class='badge badge-primary badge-pill'>'0'</span>
+					<span class='badge badge-primary badge-pill'>0</span>
 				  </li>";
+				  $username1seen[]=$row['user_name1'];
+		}		  
+		}
 		}
 		
 		
