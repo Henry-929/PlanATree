@@ -162,8 +162,8 @@ if(isset($_POST['submit'])){
 	$x=mysqli_query($conn,$f);
 	$row=mysqli_fetch_assoc($x);
 	
-	$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`,`Reply`)
-		VALUES ('','".$message."','".$row['id']."','".$user."','cool','')";
+	$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`,`Reply`,`Seen_Status`)
+		VALUES ('','".$message."','".$row['id']."','".$user."','cool','','')";
 	
 	
 	
