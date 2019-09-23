@@ -113,10 +113,14 @@ $array=array();
 $id=array();
 $username1=array();
 $listed=array();
+$message=array();
+$count=0;
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 }
-$q1='SELECT user_id, user_name1 FROM `personal_message` ';
+//$q1='SELECT user_id, user_name1 FROM `personal_message` ';
+
+$q1='SELECT * FROM `personal_message` WHERE  `Seen_Status`!="seen" AND Reply!="YES"';
 $r1= mysqli_query($conn,$q1);
 
 
@@ -128,7 +132,7 @@ if ($r1->num_rows >0){
 
 
 	echo "<ul class='list-group col-sm-6'>";
-		for($i=0;$i<count($id);$i++){
+		for($i=0;$i<count($username1);$i++){
 			
 			if(!empty(count($id)) AND  !empty($id[$i])){
 
@@ -136,12 +140,25 @@ if ($r1->num_rows >0){
 
 			if(!(in_array($id[$i],$listed))){
 				$name=$username1[$i];
-				$listed[$i]=$id[$i];		
-			echo "
+				$seen="seen";
+				$q='SELECT `message` FROM `personal_message` WHERE  `user_name1`="'.$name.'" AND `Seen_Status`!="seen"';
+				$rs= mysqli_query($conn,$qs);	
+				while($row=mysqli_fetch_assoc($rs)){
+				if(!(in_array($row['message'],$message))){
+				$message[]=$row['message'];
+				$count=count($message); 
+				}
+				}
+				echo "
 				  <li class='list-group-item d-flex justify-content-between align-items-center'>
-					<h4><a class='stretched-link text-decoration-none' href='personal.php?id=".$name."'>".$name."</a></h4><br>
-					<span class='badge badge-primary badge-pill'>1</span>
+					<h4><a class='stretched-link text-decoration-none' href='personal.php?id=".$name."&seen=".$seen."'>".$name."</a></h4><br>
+					<span class='badge badge-primary badge-pill'>".$count."</span>
 				  </li>";
+				
+				$message=array();
+				$listed[$i]=$id[$i];
+				
+			
 			}
 			}
 			}
