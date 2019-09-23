@@ -112,14 +112,16 @@ session_start();
 <div class="overflow-auto" id="overflow" style="height: 550px;">
 <?php
 
-	if(isset($_GET['id'])){
+	if((isset($_GET['id'])) && (isset( $_GET['seen']))){
 	$names=$_GET['id'];
+	$seen=$_GET['seen'];
 	}
 	
 	$user=$_SESSION['user'];
 	$q1='SELECT * FROM `personal_message` WHERE `user_name1`="'.$names.'" AND `user_name2`="'.$user.'" ';
 	$r1= mysqli_query($conn,$q1);
 	while($row=mysqli_fetch_assoc($r1)){
+	$id=$row['user_id'];
 	$message=$row['message'];
 	$username1=$row['user_name1'];
 	$username2=$row['user_name2'];
@@ -138,6 +140,8 @@ session_start();
 	<p>".$message."</p>
 	
 	</div>";
+	$qSeen="UPDATE `personal_message` SET `Seen_Status`='".$seen."' WHERE `user_id`='".$id."'";
+		mysqli_query($conn,$qSeen);	
 	}else {
 		echo "
 		<div class='d-flex flex-row-reverse'>
@@ -164,8 +168,8 @@ if(isset($_POST['submit'])){
 	$x=mysqli_query($conn,$f);
 	$row=mysqli_fetch_assoc($x);
 
-		$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`,`Reply`)
-		VALUES ('','".$message."','".$row['id']."','".$names."','".$user."','YES')";
+		$q="INSERT INTO `personal_message` (`Roomid`,`message`,`user_id`,`user_name1`,`user_name2`,`Reply`,`Seen_Status`)
+		VALUES ('','".$message."','".$row['id']."','".$names."','".$user."','YES','')";
 
 	 if(mysqli_query($conn,$q)){
 		echo "
