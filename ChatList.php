@@ -170,6 +170,11 @@ if ($r1->num_rows >0){
 				  </li>";
 				$message=array();
 				$listed[$i]=$id[$i];
+				echo '<script>
+					sound= new Audio();
+					sound.src= "Ting.mp3";
+					sound.autoplay=true;
+					</script>';
 			}
 			}
 			}
