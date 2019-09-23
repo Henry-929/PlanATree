@@ -119,31 +119,35 @@ while($rows=mysqli_fetch_assoc($r2)){
 $q1='SELECT user_id, user_name1 FROM `personal_message` ';
 $r1= mysqli_query($conn,$q1);
 
-while($row=mysqli_fetch_assoc($r1)){
-	$id[]=$row['user_id'];
-	$username1[]=$row['user_name1'];
-	}
+
+if ($r1->num_rows >0){
+	while($row=mysqli_fetch_assoc($r1)){
+		$id[]=$row['user_id'];
+		$username1[]=$row['user_name1'];
+		}
+
 
 	echo "<ul class='list-group col-sm-6'>";
-for($i=1;$i<count($id);$i++){
-	
+		for($i=0;$i<count($id);$i++){
+			
+			if(!empty(count($id)) AND  !empty($id[$i])){
 
-	if(!empty(count($id)) AND  !empty($id[$i])){
+			if(in_array($id[$i],$array)){
 
-	if(in_array($id[$i],$array)){
-
-	if(!(in_array($id[$i],$listed))){
-		$name=$username1[$i];
-		$listed[$i]=$id[$i];		
-	echo "
-		  <li class='list-group-item d-flex justify-content-between align-items-center'>
-			<h4><a class='stretched-link text-decoration-none' href='personal.php?id=".$name."'>".$name."</a></h4><br>
-			<span class='badge badge-primary badge-pill'>1</span>
-		  </li>";
-	}
-	}
-	}
-	else if(empty(count($id))){
+			if(!(in_array($id[$i],$listed))){
+				$name=$username1[$i];
+				$listed[$i]=$id[$i];		
+			echo "
+				  <li class='list-group-item d-flex justify-content-between align-items-center'>
+					<h4><a class='stretched-link text-decoration-none' href='personal.php?id=".$name."'>".$name."</a></h4><br>
+					<span class='badge badge-primary badge-pill'>1</span>
+				  </li>";
+			}
+			}
+			}
+		}
+}
+	else{
 		echo "<div class='col'>
 		<div class='card text-center'>
 		<div class='card-body'>
@@ -154,8 +158,8 @@ for($i=1;$i<count($id);$i++){
 		</div>";
 	}
 	
-
-}
+	
+	
 	echo "</ul>";
 		//This is for the notification bell
 		// echo '<a href="#" class="inbox">
