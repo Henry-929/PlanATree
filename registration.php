@@ -173,15 +173,20 @@ session_start();
       </select>
     </div>
   </div>
-  
-  <button type="submit" class="btn btn-primary">Sign in</button>
-
   <div class="form-group row">
-  <div class="col-sm-5"></div>
-  <div class="col-sm-4">
-	Already have an account? <a href="registration.php" class="text-decoration-none">Log In </a>
+	
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+    </div>
+
   </div>
-  <div class="col-sm-3"></div>
+  
+  <div class="form-group row">
+
+  <div class="col-sm d-flex justify-content-center">
+	Already have an account? <a href="login.php" class="text-decoration-none">Log In </a>
+  </div>
+
   </div>
   
   

@@ -155,11 +155,11 @@ session_start();
 	<div class="col-sm-4"></div>
   </div>
   <div class="form-group row">
-  <div class="col-sm-5"></div>
-  <div class="col-sm-4">
+
+  <div class="col-sm d-flex justify-content-center">
 	New here? <a href="registration.php" class="text-decoration-none">Sign Up</a>
   </div>
-  <div class="col-sm-3"></div>
+
   </div>
   
   
