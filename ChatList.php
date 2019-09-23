@@ -130,24 +130,19 @@ $listed=array();
 $message=array();
 $count=0;
 $notification=0;
-
 while($rows=mysqli_fetch_assoc($r2)){
 	$array[]=$rows['id'];
 }
-//$q2='SELECT user_id, user_name1 FROM `personal_message` ';
-$q1='SELECT * FROM `personal_message` WHERE  `Seen_Status`!="seen" AND Reply!="YES"';
-
+$q1='SELECT user_id, user_name1 FROM `personal_message` ';
 $r1= mysqli_query($conn,$q1);
 
 
-if ($r2->num_rows >0){
+if ($r1->num_rows >0){
 	while($row=mysqli_fetch_assoc($r1)){
 		$id[]=$row['user_id'];
 		$username1[]=$row['user_name1'];
 		}
-		
 
-		
 	echo "<div class='col-sm-6'>
 			<ul class='list-group'>";
 		for($i=0;$i<count($username1);$i++){
@@ -159,19 +154,13 @@ if ($r2->num_rows >0){
 			if(!(in_array($id[$i],$listed))){
 				$name=$username1[$i];
 				$seen="seen";
-				$q='SELECT `message` FROM `personal_message` WHERE  `user_name1`="'.$name.'" AND `Seen_Status`!="seen" AND `Reply`!="YES"';
+				$q='SELECT COUNT(`message`)as total, `message` FROM `personal_message` WHERE  `user_name1`="'.$name.'" AND `Seen_Status`!="seen" AND `Reply`!="YES"';
 				$rs= mysqli_query($conn,$q);
-				
-				$n='SELECT `user_name1` FROM `personal_message` WHERE `Seen_Status`="seen" AND `Reply`!="YES"';
-				$num=mysqli_query($conn,$n);
-				$rown=mysqli_fetch_assoc($num);
-				$num=$rown['user_name1'];
-				$notification=$num;
 				
 				while($row=mysqli_fetch_assoc($rs)){
 				if(!(in_array($row['message'],$message))){
 				$message[]=$row['message'];
-				$count=count($message); 		
+				$count=$row['total']; 	 		
 				}
 				}
 				echo "
@@ -179,19 +168,14 @@ if ($r2->num_rows >0){
 					<h4><a class='stretched-link text-decoration-none' href='personal.php?username=".$name."&seen=".$seen."'>".$name."</a></h4><br>
 					<span class='badge badge-primary badge-pill'>".$count."</span>
 				  </li>";
-				
 				$message=array();
 				$listed[$i]=$id[$i];
-				
-		
-				
 			}
 			}
 			}
 					
+			
 		}
-	
-		
 		
 }
 	else{
