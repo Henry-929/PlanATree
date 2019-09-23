@@ -80,12 +80,6 @@ session_start();
 				$rown=mysqli_fetch_assoc($num);
 				$num=$rown['total'];
 				$notification=$num;
-				
-					echo '<script>
-					sound= new Audio();
-					sound.src= "Ting.mp3";
-					sound.autoplay=true;
-					</script>';
 			
 				echo "<a href='ChatCheck.php' class='nav-link' >
 				<button type='button' class='btn btn-primary btn-sm'>
