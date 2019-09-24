@@ -133,6 +133,7 @@ session_start();
 				<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
 				<li data-target="#carouselIndicators" data-slide-to="1"></li>
 				<li data-target="#carouselIndicators" data-slide-to="2"></li>
+				<li data-target="#carouselIndicators" data-slide-to="3"></li>
 			  </ol>
 			  <div class="carousel-inner">
 				<div class="carousel-item active">
@@ -143,6 +144,9 @@ session_start();
 				</div>
 				<div class="carousel-item">
 				  <img src="img/orange_dis.jpg" class="d-block w-100" alt="orange">
+				</div>
+				<div class="carousel-item">
+				  <img src="img/blueberry_dis.jpg" class="d-block w-100" alt="blueberry">
 				</div>
 			  </div>
 			  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
