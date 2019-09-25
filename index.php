@@ -183,7 +183,7 @@ session_start();
 						<div class='card-body'>
 						<h5 class='card-title'>".$row['tree_category'] ."</h5>
 						<p class='card-text'></p>
-						<a href='tree.php?category=".$row['tree_category'] ."' class='btn btn-primary stretched-link'>View</a>
+						<a href='trees.php?category=".$row['tree_category'] ."' class='btn btn-primary stretched-link'>View</a>
 						</div>
 					 </div>	";	
 				}
