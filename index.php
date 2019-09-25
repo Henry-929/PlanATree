@@ -147,7 +147,7 @@ session_start();
 				  <img src="img/orange_dis.jpg" class="d-block w-100" alt="orange">
 				</div>
 				<div class="carousel-item">
-				  <img src="img/blueberry_dis.jpg" class="d-block w-100" alt="blueberry">
+				  <img src="img/wintergem_dis.jpg" class="d-block w-100" alt="wintergem">
 				</div>
 				<div class="carousel-item">
 				  <img src="img/camelliacurly_dis.jpg" class="d-block w-100" alt="camelliacurly">
