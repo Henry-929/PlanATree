@@ -122,7 +122,7 @@ session_start();
     $result = $conn->query($sql);
 	while($row = $result->fetch_assoc()){
 	echo "
-	<div class='col-sm'>
+	<div class='col-sm-4 rounded-lg'>
 	<div class='card-deck'>
 	<div class='card text-center'>
     <img class='card-img-top' src='".$row['pic']."' alt='" .$row['tree_name']. "' >
@@ -147,6 +147,8 @@ session_start();
 	</div>
 	</div>
 	</div>
+			<div class='row mt-1'></div>
+			<div class='row mt-2'></div>
 	</div>
 	";
 	}
@@ -163,6 +165,9 @@ session_start();
 			<div class="row mt-2"></div>
 			<div class="row mt-3"></div>
 			<div class="row mt-4"></div>
+			<div class="row mt-5"></div>
+			<div class="row mt-6"></div>
+			<div class="row mt-7"></div>
 
 	<nav class="navbar fixed-bottom navbar-light bg-light">
 	<?php
