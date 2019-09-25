@@ -172,24 +172,25 @@ session_start();
 			<div class="col">
 			<div class="d-flex justify-content-around">
 			
-				<div class="card text-center" style="width: 18rem;">
-				<img src="img/1.png" class="card-img-top" alt="Fruit">
-				<div class="card-body">
-				<h5 class="card-title">Fruit Tree</h5>
-				<p class="card-text"></p>
-				<a href="fruit.php" class="btn btn-primary stretched-link">View</a>
-				</div>
-				</div>		
+			<?php
+				
+				$sql = "select distinct tree_category from tree";
+				$result = $conn->query($sql);
+				while($row = $result->fetch_assoc()){
+				
+				echo "<div class='card text-center' style='width: 18rem;'>
+						<img src='img/".$row['tree_category'] .".jpg' class='card-img-top' alt='".$row['tree_category'] ."'>
+						<div class='card-body'>
+						<h5 class='card-title'>".$row['tree_category'] ."</h5>
+						<p class='card-text'></p>
+						<a href='tree.php?category=".$row['tree_category'] ."' class='btn btn-primary stretched-link'>View</a>
+						</div>
+					 </div>	";	
+				}
 			
 			
-				<div class="card text-center" style="width: 18rem;">
-				<img src="img/2.png" class="card-img-top" alt="Hedge">
-				<div class="card-body">
-				<h5 class="card-title">Hedge</h5>
-				<p class="card-text"></p>
-				<a href="hedge.php" class="btn btn-primary stretched-link">View</a>
-				</div>
-				</div>
+			?>
+			
 			</div>
 			</div>
 			</div>
