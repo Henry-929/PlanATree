@@ -128,9 +128,9 @@ session_start();
 			<div class="row mt-7"></div>
 			
 			
-			<div class="clearfix d-flex flex-row-reverse fixed-top" style="top: 80px; right:10px" >
+			<div class="clearfix d-flex flex-row-reverse fixed-top" style="top: 80px; right:10px; height: 20px;" >
 				<div aria-live="polite"  aria-atomic="true" class="float-right">
-				  <div class="toast" data-animation="true" data-autohide="true" data-delay="4000" aria-live="assertive" aria-atomic="true">
+				  <div class="toast" data-animation="true" data-autohide="true" data-delay="9000" aria-live="assertive" aria-atomic="true">
 					<div class="toast-header">
 					  <strong class="mr-auto">Funfact</strong>
 					  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
