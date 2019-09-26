@@ -72,7 +72,7 @@ session_start();
 			if(isset($_SESSION['user'])){
 				$session=$_SESSION['user'];
 				if($session=="cool"){
-					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE `Seen_Status`!="seen" AND `Reply`!="YES"';
+					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE `Seen_Status`!="seen"';// AND `Reply`!="YES"';
 				}else{
 					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE user_name1="'.$_SESSION["user"].'" AND `Seen_Status`!="seen" AND `Reply`="YES"';
 				}
