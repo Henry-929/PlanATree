@@ -126,9 +126,33 @@ session_start();
 			<div class="row mt-5"></div>
 			<div class="row mt-6"></div>
 			<div class="row mt-7"></div>
+			
+			
+			<div class="clearfix d-flex flex-row-reverse fixed-top" style="top: 80px; right:10px" >
+				<div aria-live="polite"  aria-atomic="true" class="float-right">
+				  <div class="toast" data-animation="true" data-autohide="true" data-delay="4000" aria-live="assertive" aria-atomic="true">
+					<div class="toast-header">
+					  <strong class="mr-auto">Funfact</strong>
+					  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="toast-body">
+					  Hello, world! This is a Funfact message.
+					  Hello, world! This is a Funfact message.
+					  Hello, world! This is a Funfact message.
+					  Hello, world! This is a Funfact message.
+					  Hello, world! This is a Funfact message.
+					  Hello, world! This is a Funfact message.
+					</div>
+				  </div>
+				</div>
+			</div>
+			
+			
+		<div class="container">		   
 
-		<div class="container">
-			   <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+			 <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 			  <ol class="carousel-indicators">
 				<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
 				<li data-target="#carouselIndicators" data-slide-to="1"></li>
@@ -162,7 +186,7 @@ session_start();
 				<span class="sr-only">Next</span>
 			  </a>
 			</div>
-		</div>
+			</div>
    
 	<div class="container">
 			<div class="row mt-1"></div>
@@ -195,7 +219,6 @@ session_start();
 			</div>
 			</div>
 	</div>		
-	   
 			<div class="row mt-1"></div>
 			<div class="row mt-2"></div>
 			<div class="row mt-3"></div>
@@ -234,6 +257,10 @@ session_start();
 	<svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" /><circle cx="25" cy="27" r="2" /><circle cx="12" cy="27" r="2" /></svg> View Cart</a>
 	</nav>
 
-
+<script>
+$(document).ready(function(){
+  $('.toast').toast('show');
+});
+</script>
 </body>
 </html>
