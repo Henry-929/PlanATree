@@ -128,7 +128,7 @@ session_start();
 			<div class="row mt-7"></div>
 			
 			
-			<div class="clearfix d-flex flex-row-reverse fixed-top" style="top: 80px; right:10px;" >
+			<div class="clearfix d-flex flex-row-reverse fixed-top" style="top: 100px; right:10px;" >
 				<div aria-live="polite"  aria-atomic="true" class="float-right">
 				  <div class="toast" data-animation="true" data-autohide="true" data-delay="9000" aria-live="assertive" aria-atomic="true">
 					<div class="toast-header">
