@@ -67,17 +67,41 @@ session_start();
         </div>
       </li>
 	  
-	  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Chat
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="login.php">Community</a>
-          <a class="dropdown-item" href="login.php">Admin</a>
-        </div>
+	  <li class="nav-item ">    
+		  <a class='nav-link text-decoration-none' href='ChatCheck.php' >Chat</a>
       </li>
-	  
     </ul>
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<?php
+			if(isset($_SESSION['user'])){
+				$session=$_SESSION['user'];
+				if($session=="cool"){
+					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE user_name2="'.$_SESSION["user"].'" AND `Seen_Status`!="seen" AND `Reply`!="YES"';
+				}else{
+					$n='SELECT COUNT(`message`)as total FROM `personal_message` WHERE user_name1="'.$_SESSION["user"].'" AND `Seen_Status`!="seen" AND `Reply`="YES"';
+				}
+				$num=mysqli_query($conn,$n);
+				$rown=mysqli_fetch_assoc($num);
+				$num=$rown['total'];
+				$notification=$num;
+				echo "<a href='ChatCheck.php' class='nav-link' >
+				<button type='button' class='btn btn-primary btn-sm'>
+				".$_SESSION['user']." <span class='badge badge-light'>$notification</span>
+				<span class='sr-only'>unread messages</span>
+				</button>			
+				</a>";
+				echo "</li>";
+				echo "<li class='nav-item'>";
+				echo "<a class='nav-link text-decoration-none' href='logout.php' >Log Out</a>";
+				echo "</li>";
+			}else{
+				echo "<a class='nav-link' href='login.php'>Login</span></a>
+				</li>";
+			}
+			?>
+		
+	</ul>
     <form class="form-inline my-2 my-lg-0" action="searchProcess.php" method="post" >
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="apple">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -105,7 +129,9 @@ session_start();
 		if ($result->num_rows >0){
         while($row = $result->fetch_assoc()){
     
-        echo " <div class='col'>
+        echo "
+	
+	<div class='col'>
 		<div class='card mb-3' style='max-width: 1280px;'>
 			<div class='row no-gutters'>
 				<div class='col-md-4'>
@@ -115,7 +141,8 @@ session_start();
 			<div class='card-body'>
 				<h5 class='card-title'>" .$row['tree_name']. "</h5>
 					<p class='card-text'>
-						<p>Infomation: " . $row['tree_des'] . "</p>
+						<p class='text-break'>Infomation: " . $row['tree_des'] . "</p>
+						<p class='text-break'>Basic Tree Tip: " . $row['tree_tip'] . "</p>
 						<p>Tree Category: " . $row['tree_category'] . "</p>
 						<p>Soil Drainage: " . $row['tree_soilDrainage'] . "</p>
 						<p>Sun : ". $row['tree_sun'] ."</p>
@@ -144,7 +171,8 @@ session_start();
 
 	</div>
 	";
-		}}
+		}
+		}
 	else{
 		echo "<div class='col'>
 		<div class='card text-center'>
@@ -156,8 +184,6 @@ session_start();
 		</div>";
 	}
 
-
-        mysqli_close($conn);
 ?>
 </div>
 	</div>

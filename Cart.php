@@ -3,7 +3,7 @@ session_start();
 //
 $id = $_GET["id"];
 $category =$_GET["category"];
-$page =$_GET["page"];
+
 if(empty($_SESSION["gwc"]))
 {
 
@@ -60,7 +60,7 @@ else
 }
 
 if($category){
-	header("location:". $category .".php");
+	header("location:trees.php?category=". $category ."");
 }
 else{
 	header("location:tree.php?id=". $id ."");
