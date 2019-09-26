@@ -184,20 +184,9 @@ if(isset($_POST['submit'])){
 	
 	
 	if(mysqli_query($conn,$q)){
-		echo "
-		<div class='col d-flex justify-content-end'>
+		echo("<meta http-equiv='refresh' content='1'>");
 		
-		<h3>".$_SESSION['user']."</h3>
-		
-		</div>";
-		echo "
-		<div class='col d-flex justify-content-end'>
-		
-		<p>".$message."</p>
-		
-		</div>";
-		
-	};
+	}
 }
 ?>
 

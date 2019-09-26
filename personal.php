@@ -187,20 +187,9 @@ if(isset($_POST['submit'])){
 		VALUES ('','".$message."','".$row['id']."','".$names."','".$user."','YES','')";
 
 	 if(mysqli_query($conn,$q)){
-		echo "
-		<div class='d-flex flex-row-reverse'>
+		echo("<meta http-equiv='refresh' content='1'>");
 		
-		<h3>".$_SESSION['user']."</h3>
-		
-		</div>";
-		echo "
-		<div class='d-flex flex-row-reverse'>
-		
-		<p>".$message."</p>
-		
-		</div>";
-		
-	}; 
+	}
 }
 ?>
 
