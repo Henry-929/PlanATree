@@ -138,12 +138,15 @@ session_start();
 					  </button>
 					</div>
 					<div class="toast-body">
-					  Hello, world! This is a Funfact message.
-					  Hello, world! This is a Funfact message.
-					  Hello, world! This is a Funfact message.
-					  Hello, world! This is a Funfact message.
-					  Hello, world! This is a Funfact message.
-					  Hello, world! This is a Funfact message.
+					<?php
+					//This will display one fun fact from the table funfacts randomly.
+					$random_fact='SELECT `fun_facts`  FROM `funfacts` ORDER BY RAND() LIMIT 1 ';
+					$random_facts_row=mysqli_query($conn,$random_fact);
+					$display_fun_fact=mysqli_fetch_assoc($r);
+					
+					echo $display_fun_fact;
+					
+					?>
 					</div>
 				  </div>
 				</div>
