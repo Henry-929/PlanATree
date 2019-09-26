@@ -144,7 +144,7 @@ session_start();
 					$random_facts_row=mysqli_query($conn,$random_fact);
 					$display_fun_fact=mysqli_fetch_assoc($random_facts_row);
 					
-					echo '<div class="toast-body">"'.$display_fun_fact.'"</div>'
+					echo '<div class="toast-body">"'.$display_fun_fact['fun_facts'].'"</div>'
 					
 					?>
 					
