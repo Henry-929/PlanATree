@@ -135,6 +135,7 @@ session_start();
 				<h5 class='card-title'>" .$row['tree_name']. "</h5>
 					<p class='card-text'>
 						<p class='text-break'>Infomation: " . $row['tree_des'] . "</p>
+						<p class='text-break'>Basic Tree Tip: " . $row['tree_tip'] . "</p>
 						<p>Tree Category: " . $row['tree_category'] . "</p>
 						<p>Soil Drainage: " . $row['tree_soilDrainage'] . "</p>
 						<p>Sun : ". $row['tree_sun'] ."</p>
