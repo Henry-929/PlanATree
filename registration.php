@@ -63,7 +63,7 @@ session_start();
       </li>
 	  
 	  <li class="nav-item ">    
-		  <a class='nav-link text-decoration-none' href='ChatCheck.php' >Chat</a>
+		  <a class='nav-link text-decoration-none' href='CheckLogin.php' >Chat</a>
       </li>
     </ul>
 	<ul class="navbar-nav">
@@ -80,7 +80,7 @@ session_start();
 				$rown=mysqli_fetch_assoc($num);
 				$num=$rown['total'];
 				$notification=$num;
-				echo "<a href='ChatCheck.php' class='nav-link' >
+				echo "<a href='CheckLogin.php' class='nav-link' >
 				<button type='button' class='btn btn-primary btn-sm'>
 				".$_SESSION['user']." <span class='badge badge-light'>$notification</span>
 				<span class='sr-only'>unread messages</span>
