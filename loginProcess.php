@@ -6,11 +6,10 @@
         
         $sql_select = "SELECT user_name,password, purchased FROM customer WHERE user_name = '$userID' AND password = '$psw'";
 
-        $ret = mysqli_query($conn,$sql_select);
-
-        $row = mysqli_fetch_array($ret);
-
+        $result = mysqli_query($conn,$sql_select);
+			$row = mysqli_fetch_array($result);
 			if(!empty($userID)&&!empty($psw)){
+				
 					if($userID==$row['user_name']&&$psw==$row['password']) {
 
 
@@ -45,13 +44,32 @@
 							$_SESSION['vip']=100;
 						}
 
-						header("Location:index.php");
+						 echo "
+							<div class='col-sm-4'></div>
+								<div class='alert alert-success col-sm text-center' role='alert'>
+								  Login Successful ! <a href='index.php' class='alert-link stretched-link'>Click</a> to homepage.
+								</div>
+							<div class='col-sm-4'></div>
+							";
 
-						mysqli_close($conn);
+						
 					}else {
-						header("Location:login.php?err=1");
+						echo "
+							<div class='col-sm'></div>
+								<div class='alert alert-danger col-sm text-center' role='alert'>
+								  The Username or Password is wrong!
+								</div>
+							<div class='col-sm'></div>
+							";
 					}
 			}else{
-				header("Location:login.php?err=2");
+				echo "
+					<div class='col-sm-4'></div>
+						<div class='alert alert-danger col-sm text-center' role='alert'>
+						  Please fill Username and Password!
+						</div>
+					<div class='col-sm-4'></div>
+					";
 			}
+			mysqli_close($conn);
 ?>
