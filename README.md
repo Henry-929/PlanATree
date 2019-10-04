@@ -2,4 +2,4 @@
 
 This is Group 6 PlanAtree project.
 
-Sprint 1
+Sprint 2
